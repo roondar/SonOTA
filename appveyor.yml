@@ -42,17 +42,13 @@ install:
   # compiled extensions and are not provided as pre-built wheel packages,
   # pip will build them from source using the MSVC compiler matching the
   # target Python version and architecture
-  - "%CMD_IN_ENV% dir"
+  - "%CMD_IN_ENV% ls"
   - "%CMD_IN_ENV% pip install -r requirements.txt"
   - "%CMD_IN_ENV% pip install pyinstaller"
 
 
 test_script:
   # Run the project tests and store results in .xml log
-  - ps: |
-      # this produces nosetests.xml which is uploaded on_finish
-      &$env:PYTHON\python setup.py nosetests --with-xunit
-      if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode) }
       
 after_test:
   # If tests are successful, create binary packages for the project.
