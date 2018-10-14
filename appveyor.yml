@@ -45,9 +45,9 @@ install:
   - "pip install -r requirements.txt"
   - "pip install pyinstaller"
 
+build: none
 
-test_script:
-  # Run the project tests and store results in .xml log
+test_script: none
       
 after_test:
   # If tests are successful, create binary packages for the project.
